@@ -94,26 +94,30 @@ export default function Home() {
           <h2>Quantità</h2>
 
           {peopleSelected ? (
-            <div id={styles.form}>
+            <div>
               <div className={styles.input}>
                 <label htmlFor="number-of-people">Numero di persone</label>
                 <input id="number-of-people" min="1" onChange={onNumberOfPeopleChange} step="1" type="number" value={numberOfPeopleSelected} />
               </div>
 
-              <p>
-                Preferisci specificare la quantità di farina che vuoi utilizzare? <button onClick={onPeopleSelected(false)}>Clicca qui!</button>
-              </p>
+              <div>
+                <p>
+                  Preferisci specificare la quantità di farina che vuoi utilizzare? <button onClick={onPeopleSelected(false)}>Clicca qui!</button>
+                </p>
+              </div>
             </div>
           ) : (
-            <div id={styles.form}>
+            <div>
               <div className={styles.input}>
                 <label htmlFor="flour-grams">Grammi di farina</label>
                 <input id="flour-grams" min="50" onChange={onFlourGramsChange} step="50" type="number" value={flourGramsSelected} />
               </div>
 
-              <p>
-                Preferisci specificare il numero di persone per cui vuoi fare la pizza? <button onClick={onPeopleSelected(true)}>Clicca qui!</button>
-              </p>
+              <div>
+                <p>
+                  Preferisci specificare il numero di persone per cui vuoi fare la pizza? <button onClick={onPeopleSelected(true)}>Clicca qui!</button>
+                </p>
+              </div>
             </div>
           )}
         </div>

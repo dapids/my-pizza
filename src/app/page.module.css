@@ -17,26 +17,10 @@
   padding: 16px 16px 32px;
 }
 
-#form {
-  display: flex;
-  flex-direction: row;
-
-  @media screen and (max-width: 768px) {
-    flex-direction: column;
-  }
-}
-
 .input {
-  flex-grow: 1;
-  margin-right: 16px;
   max-width: 50%;
 
-  &:last-child {
-    margin-right: 0;
-  }
-
-  @media screen and (max-width: 768px) {
-    margin-right: 0;
+  @media screen and (max-width: 1024px) {
     max-width: 100%;
   }
 }
