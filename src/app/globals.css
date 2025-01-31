@@ -28,7 +28,7 @@ h2, h3 {
 }
 
 p {
-  margin-top: 8px;
+  margin-top: 16px;
 }
 
 ul {
@@ -44,6 +44,15 @@ button {
   border: none;
   font-size: inherit;
   text-decoration: underline;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:disabled {
+    color: #cccccc;
+    cursor: not-allowed;
+  }
 }
 
 label {
@@ -56,10 +65,8 @@ input[type=number] {
   display: block;
   font-size: 16px;
   height: 50px;;
-  margin: 8px 0;
   outline: none;
   padding: 8px;
-  width: 100%;
 }
 
 input[type=number]:focus {

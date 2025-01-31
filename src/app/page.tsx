@@ -53,14 +53,20 @@ export default function Home() {
   const defaultFlourGrams = 350;
   const [flourGramsSelected, setFlourGramsSelected] = useState(defaultFlourGrams);
 
-  const onFlourGramsChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+  const onFlourGramsChangeByInput = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     setFlourGramsSelected(Number(event.target.value));
+  }, []);
+
+  const flourGramsStep = 50;
+
+  const onFlourGramsChangeByButton = useCallback((amount: number) => () => {
+    setFlourGramsSelected((flourGrams) => flourGrams + amount);
   }, []);
 
   const defaultPeopleNumber = 2;
   const [numberOfPeopleSelected, setNumberOfPeopleSelected] = useState(defaultPeopleNumber);
 
-  const onNumberOfPeopleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+  const onNumberOfPeopleChangeByInput = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     setNumberOfPeopleSelected(Number(event.target.value));
   }, []);
 
@@ -68,6 +74,12 @@ export default function Home() {
 
   const onPeopleSelected = useCallback((selected: boolean) => () => {
     setPeopleSelected(selected);
+  }, []);
+
+  const numberOfPeopleStep = 1;
+
+  const onNumberOfPeopleChangeByButton = useCallback((amount: number) => () => {
+    setNumberOfPeopleSelected((numberOfPeopleSelected) => numberOfPeopleSelected + amount);
   }, []);
 
   const flourGrams = peopleSelected ? numberOfPeopleSelected * 175 : flourGramsSelected;
@@ -84,7 +96,7 @@ export default function Home() {
   return (
     <div>
       <header id={styles.header}>
-        <Image src="/logo.png" alt="My Pizza logo" height={70} width={70} />
+        <Image src="/logo.png" alt="My Pizza logo" height={60} width={60} />
 
         <h1 id={styles.claim}>La mia ricetta della pizza open-source!</h1>
       </header>
@@ -95,29 +107,27 @@ export default function Home() {
 
           {peopleSelected ? (
             <div>
-              <div className={styles.input}>
-                <label htmlFor="number-of-people">Numero di persone</label>
-                <input id="number-of-people" min="1" onChange={onNumberOfPeopleChange} step="1" type="number" value={numberOfPeopleSelected} />
+              <label htmlFor="number-of-people">Numero di persone</label>
+              <div className={styles.form}>
+                <button className={styles.button} disabled={numberOfPeopleSelected <= numberOfPeopleStep} onClick={onNumberOfPeopleChangeByButton(-numberOfPeopleStep)}>-</button>
+                <input className={styles.input} id="number-of-people" min={numberOfPeopleStep} onChange={onNumberOfPeopleChangeByInput} step={numberOfPeopleStep} type="number" value={numberOfPeopleSelected} />
+                <button className={styles.button} onClick={onNumberOfPeopleChangeByButton(numberOfPeopleStep)}>+</button>
               </div>
-
-              <div>
-                <p>
-                  Preferisci specificare la quantità di farina che vuoi utilizzare? <button onClick={onPeopleSelected(false)}>Clicca qui!</button>
-                </p>
-              </div>
+              <p>
+                Preferisci specificare la quantità di farina che vuoi utilizzare? <button onClick={onPeopleSelected(false)}>Clicca qui!</button>
+              </p>
             </div>
           ) : (
             <div>
-              <div className={styles.input}>
-                <label htmlFor="flour-grams">Grammi di farina</label>
-                <input id="flour-grams" min="50" onChange={onFlourGramsChange} step="50" type="number" value={flourGramsSelected} />
+              <label htmlFor="flour-grams">Grammi di farina</label>
+              <div className={styles.form}>
+                <button className={styles.button} disabled={flourGramsSelected <= flourGramsStep} onClick={onFlourGramsChangeByButton(-flourGramsStep)}>-</button>
+                <input className={styles.input} id="flour-grams" min={flourGramsStep} onChange={onFlourGramsChangeByInput} step={flourGramsStep} type="number" value={flourGramsSelected} />
+                <button className={styles.button} onClick={onFlourGramsChangeByButton(flourGramsStep)}>+</button>
               </div>
-
-              <div>
                 <p>
                   Preferisci specificare il numero di persone per cui vuoi fare la pizza? <button onClick={onPeopleSelected(true)}>Clicca qui!</button>
                 </p>
-              </div>
             </div>
           )}
         </div>
