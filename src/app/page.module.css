@@ -8,13 +8,13 @@
 }
 
 #claim {
-  font-size: 18px;
+  font-size: 17px;
   font-style: italic;
   margin-left: 8px;
 }
 
 #main {
-  padding: 16px;
+  padding: 16px 16px 32px;
 }
 
 #form {
@@ -38,5 +38,11 @@
   @media screen and (max-width: 768px) {
     margin-right: 0;
     max-width: 100%;
+  }
+}
+
+.steps {
+  & li {
+    margin-top: 8px;
   }
 }
