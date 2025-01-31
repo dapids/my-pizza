@@ -48,3 +48,9 @@
     margin-top: 8px;
   }
 }
+
+#footer {
+  border-top: 1px solid #cccccc;
+  padding: 16px 8px;
+  text-align: center;
+}

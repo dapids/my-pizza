@@ -202,6 +202,9 @@ export default function Home() {
           </ul>
         </div>
       </main>
+      <footer id={styles.footer}>
+        Sito web realizzato con ❤️ da <a href="https://www.davidsorrentino.com">Dapids</a>.
+      </footer>
     </div>
   );
 }
