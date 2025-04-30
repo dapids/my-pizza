@@ -67,7 +67,7 @@ export default function Home() {
   return (
     <div id={styles.container}>
       <header id={styles.header}>
-        <Image src="/logo.png" alt="My Pizza logo" height={50} width={50} />
+        <Image src="/logo.png" alt="My Pizza logo" height={36} width={36} />
 
         <h1 id={styles.claim}>
           <Translation language={language} translations={{
@@ -78,9 +78,9 @@ export default function Home() {
 
         <button id={styles.flag} onClick={toggleLanguage}>
           {language === 'it' ? (
-            <Image src="/italian.png" alt="US flag" height={36} width={36} />
+            <Image src="/italian.png" alt="US flag" height={34} width={34} />
           ) : (
-            <Image src="/english.png" alt="Italian flag" height={36} width={36} />
+            <Image src="/english.png" alt="Italian flag" height={34} width={34} />
           )}
         </button>
       </header>
