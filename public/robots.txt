@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /.next/
+
+Sitemap: https://my-pizza.example.com/sitemap.xml

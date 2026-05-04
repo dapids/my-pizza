@@ -13,8 +13,35 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "My pizza",
-  description: "La mia ricetta della pizza open-source!",
+  title: "My Pizza - La Ricetta Italiana",
+  description: "La mia ricetta della pizza open-source! Scopri come fare la vera pizza italiana con questo ricettario condiviso.",
+  keywords: "pizza, ricetta, italiana, open-source, cucina",
+  authors: [{ name: "Chef" }],
+  creator: "Chef",
+  metadataBase: new URL("https://my-pizza.example.com"),
+  robots: "index, follow",
+  openGraph: {
+    type: "website",
+    locale: "it_IT",
+    url: "https://my-pizza.example.com",
+    siteName: "My Pizza",
+    title: "My Pizza - La Ricetta Italiana",
+    description: "La mia ricetta della pizza open-source! Scopri come fare la vera pizza italiana",
+    images: [
+      {
+        url: "https://my-pizza.example.com/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "My Pizza",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "My Pizza - La Ricetta Italiana",
+    description: "La mia ricetta della pizza open-source! Scopri come fare la vera pizza italiana",
+    images: ["https://my-pizza.example.com/og-image.png"],
+  },
 };
 
 export default function RootLayout({
@@ -23,7 +50,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="it">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
       </body>
